@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Algo.Tests
+namespace Algorithms.Tests
 {
     [TestFixture]
     public class MergeSortingTests
