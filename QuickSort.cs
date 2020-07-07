@@ -15,8 +15,7 @@ namespace Algorithms
         private void SortAux(int[] input, int start, int end)
         {
             if (end - start <= 1) return;
-            var pivot = _random.Next(start, end);
-            var pivotPosition = Arrange(input, start, pivot, end);
+            var pivotPosition = Arrange(input, start, _random.Next(start, end), end);
 
             SortAux(input, start, pivotPosition);
             SortAux(input, pivotPosition + 1, end);
