@@ -4,29 +4,35 @@ namespace Algorithms
 {
     public class LinkedList
     {
-        private readonly LinkedListNode _firstNode;
-
         public LinkedList(LinkedListNode firstNode)
         {
-            _firstNode = firstNode;
+            FirstNode = firstNode;
         }
+
+        public LinkedList(int value)
+        {
+            FirstNode = new LinkedListNode(value);
+        }
+
+        public LinkedListNode FirstNode { get; }
 
         public int GetValueAt(int position)
         {
-            var node = _firstNode;
+            var node = FirstNode;
             while (position-- > 0) node = node.Next ?? throw new IndexOutOfRangeException();
 
             return node.Data;
         }
 
-        public void Insert(int value)
+        public LinkedListNode Insert(int value)
         {
-            var node = _firstNode;
+            var node = FirstNode;
 
             while (node.Next != null)
                 node = node.Next;
 
             node.AddNode(value);
+            return node.Next;
         }
 
 
@@ -39,10 +45,10 @@ namespace Algorithms
 
         public LinkedList PartitionAround(int valueToPartition)
         {
-            var head = _firstNode;
-            var tail = _firstNode;
+            var head = FirstNode;
+            var tail = FirstNode;
 
-            var node = _firstNode;
+            var node = FirstNode;
             while (node != null)
             {
                 var next = node.Next;
@@ -75,7 +81,7 @@ namespace Algorithms
 
         private LinkedListNode GetNodeAtPosition(int position)
         {
-            var node = _firstNode;
+            var node = FirstNode;
             while (position-- > 0) node = node.Next;
 
             return node;
