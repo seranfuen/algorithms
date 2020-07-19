@@ -12,7 +12,7 @@ namespace Algorithms
                 dijkstraDistance[i] = int.MaxValue;
 
             var nodesSeen = new HashSet<int>(nodes.Length) {0};
-            dijkstraDistance[0] = 0;
+            dijkstraDistance[0] = 0; // by definition, we could actually set any other node
             while (nodesSeen.Count < nodes.Length)
             {
                 var bestDistance = int.MaxValue;
@@ -29,7 +29,7 @@ namespace Algorithms
                     bestEdge = edge;
                 }
 
-                if (bestEdge == null) break;
+                if (bestEdge == null) break; // no more connected edges to the segment starting in 0, so we exist. Unreachable nodes
 
                 dijkstraDistance[bestEdge.Destination] = bestDistance;
                 nodesSeen.Add(bestEdge.Destination);
